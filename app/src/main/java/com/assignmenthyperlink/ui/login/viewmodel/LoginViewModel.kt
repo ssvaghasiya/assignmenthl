@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import com.assignmenthyperlink.R
+import com.assignmenthyperlink.apputils.Debug
 import com.assignmenthyperlink.base.viewmodel.BaseViewModel
 import com.assignmenthyperlink.databinding.ActivityLoginBinding
 import com.assignmenthyperlink.ui.createaccount.view.CreateAccountActivity
@@ -29,7 +30,10 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
     }
 
     private fun init() {
-
+        if (Debug.DEBUG) {
+            binder.edtEmail.setText("abc@gmail.com")
+            binder.edtPassword.setText("Abc@123")
+        }
     }
 
     inner class ViewClickHandler {

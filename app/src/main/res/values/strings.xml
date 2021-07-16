@@ -77,6 +77,11 @@
     <string name="re_enter_the_same_password">Re-enter the same password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="err_select_image">Select Image</string>
-    <string name="i_agree_to_terms_condition"><![CDATA[I agree to Terms & Condition]]></string>
+    <string name="i_agree_to_terms_condition">I agree to <a href="#"><b><font fgcolor='#FD5D60'>Terms &amp; Condition</font></b></a></string>
+    <string name="click">click</string>
+    <string name="move"><![CDATA[Move>>]]></string>
+    <string name="copy"><![CDATA[Copy<<]]></string>
+    <string name="copyright"><![CDATA[Copy>>]]></string>
+    <string name="moveleft"><![CDATA[Move<<]]></string>
 
 </resources>

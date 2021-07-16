@@ -166,6 +166,7 @@
                     android:singleLine="true"
                     android:includeFontPadding="false"
                     android:text="@string/app_name"
+                    android:onClick="@{(v)->topBarClickListener.onTopBarClickListener(v,@string/click)}"
                     android:visibility="@{isTextEdit? View.VISIBLE : View.GONE, default=gone}" />
 
 

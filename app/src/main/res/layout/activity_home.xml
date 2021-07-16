@@ -19,10 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/topbar"
+            layout="@layout/topbar" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMeme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
             android:visibility="visible"
             tools:listitem="@layout/item_meme" />
 

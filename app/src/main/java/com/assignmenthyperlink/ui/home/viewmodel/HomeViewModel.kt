@@ -1,17 +1,24 @@
 package com.assignmenthyperlink.ui.home.viewmodel
 
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import com.assignmenthyperlink.R
 import com.assignmenthyperlink.apputils.Debug
+import com.assignmenthyperlink.apputils.Utils
 import com.assignmenthyperlink.base.viewmodel.BaseViewModel
 import com.assignmenthyperlink.databinding.ActivityHomeBinding
 import com.assignmenthyperlink.interfaces.CallbackListener
+import com.assignmenthyperlink.interfaces.TopBarClickListener
+import com.assignmenthyperlink.ui.createaccount.view.CreateAccountActivity
 import com.assignmenthyperlink.ui.home.datamodel.MemeData
 import com.assignmenthyperlink.ui.home.datamodel.MemeDataModel
 import com.assignmenthyperlink.ui.home.utils.MemeDataAdapter
+import com.assignmenthyperlink.ui.task3.view.Task3Activity
 
 
 class HomeViewModel(application: Application) : BaseViewModel(application) {
@@ -28,6 +35,10 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
         this.binder.viewModel = this
         this.binder.viewClickHandler = ViewClickHandler()
         memeDataModel = MemeDataModel()
+        this.binder.topbar.topBarClickListener = SlideMenuClickListener()
+        this.binder.topbar.isTextEdit = true
+        this.binder.topbar.isBackShow = true
+        this.binder.topbar.tvEditText.text = "Click Me"
         init()
     }
 
@@ -92,6 +103,29 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
+    inner class SlideMenuClickListener : TopBarClickListener {
+        override fun onTopBarClickListener(view: View?, value: String?) {
+            Utils.hideKeyBoard(getContext(), view!!)
+            if (value.equals(getLabelText(R.string.back))) {
+                try {
+                    onBackClicked(view)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+            if (value.equals(getLabelText(R.string.click))) {
+                try {
+                    val i = Intent(mContext, Task3Activity::class.java)
+                    mContext.startActivity(i)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
 
+        override fun onBackClicked(view: View?) {
+            (mContext as Activity).finish()
+        }
+    }
 }
 

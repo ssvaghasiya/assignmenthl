@@ -32,6 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
+        <activity android:name=".ui.task3.view.Task3Activity"></activity>
         <activity
             android:name=".ui.createaccount.view.CreateAccountActivity"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize"
@@ -52,7 +53,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Transparent"
-            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -77,11 +78,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustPan">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".base.view.BaseActivity"
