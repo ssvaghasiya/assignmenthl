@@ -6,15 +6,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.assignmenthyperlink.R
+import com.assignmenthyperlink.apputils.Utils
+import com.assignmenthyperlink.databinding.ItemMemeBinding
 import com.assignmenthyperlink.databinding.ItemSideMenuBinding
+import com.assignmenthyperlink.ui.home.datamodel.MemeData
 
-class SortingAdapter() : RecyclerView.Adapter<SortingAdapter.MyViewHolder>() {
+class MemeDataAdapter() : RecyclerView.Adapter<MemeDataAdapter.MyViewHolder>() {
 
     private lateinit var mEventListener: EventListener
 
-    private var data = mutableListOf<String>()
+    private var data = mutableListOf<MemeData.Meme>()
     lateinit var context: Context
-    private var selectedPos = 0
 
     constructor(context: Context) : this() {
         this.context = context
@@ -25,14 +27,14 @@ class SortingAdapter() : RecyclerView.Adapter<SortingAdapter.MyViewHolder>() {
     }
 
     interface EventListener {
-        fun onItemClick(pos: Int, item: String)
+        fun onItemClick(pos: Int, item: MemeData.Meme)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)
-        val itemBinding = DataBindingUtil.inflate<ItemSideMenuBinding>(
+        val itemBinding = DataBindingUtil.inflate<ItemMemeBinding>(
             inflater,
-            R.layout.item_side_menu, parent, false
+            R.layout.item_meme, parent, false
         )
         return MyViewHolder(itemBinding)
     }
@@ -42,7 +44,7 @@ class SortingAdapter() : RecyclerView.Adapter<SortingAdapter.MyViewHolder>() {
         return data.size
     }
 
-    fun getItem(p: Int): String {
+    fun getItem(p: Int): MemeData.Meme {
         return data[p]
 
     }
@@ -50,7 +52,12 @@ class SortingAdapter() : RecyclerView.Adapter<SortingAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = getItem(position)
         try {
-
+            Utils.loadImage(
+                holder.itemBinding.ivImage,
+                item.url!!,
+                context,
+                R.drawable.placeholder
+            )
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -60,9 +67,9 @@ class SortingAdapter() : RecyclerView.Adapter<SortingAdapter.MyViewHolder>() {
         }
     }
 
-    fun addAll(mData: List<String>) {
+    fun addAll(mData: List<MemeData.Meme>?) {
         data.clear()
-        data.addAll(mData)
+        data.addAll(mData!!)
         notifyDataSetChanged()
     }
 
@@ -71,11 +78,6 @@ class SortingAdapter() : RecyclerView.Adapter<SortingAdapter.MyViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun updateSelectedPos(pos: Int) {
-        selectedPos = pos
-        notifyDataSetChanged()
-    }
-
-    inner class MyViewHolder(internal var itemBinding: ItemSideMenuBinding) :
+    inner class MyViewHolder(internal var itemBinding: ItemMemeBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 }
