@@ -38,7 +38,7 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
         this.binder.topbar.topBarClickListener = SlideMenuClickListener()
         this.binder.topbar.isTextEdit = true
         this.binder.topbar.isBackShow = true
-        this.binder.topbar.tvEditText.text = "Click Me"
+        this.binder.topbar.tvEditText.text = "Task 3"
         init()
     }
 

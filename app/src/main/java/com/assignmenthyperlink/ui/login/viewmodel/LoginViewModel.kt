@@ -41,7 +41,8 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
             try {
                 if (isValidate()) {
                     val i = Intent(mContext, HomeActivity::class.java)
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    i.flags =
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     mContext.startActivity(i)
                 }
             } catch (e: Exception) {
