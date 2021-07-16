@@ -20,8 +20,6 @@ class Task3ViewModel(application: Application) : BaseViewModel(application) {
     lateinit var memeDataModel: MemeDataModel
     lateinit var leftDataAdapter: LeftDataAdapter
     lateinit var rightDataAdapter: RightDataAdapter
-    private var leftData = mutableListOf<Task3Data>()
-    private var rightData = mutableListOf<Task3Data>()
 
 
     fun setBinder(binder: ActivityTask3Binding) {
@@ -81,15 +79,16 @@ class Task3ViewModel(application: Application) : BaseViewModel(application) {
     inner class ViewClickHandler {
         fun onAdd(view: View) {
             try {
-                var findLeft: Task3Data? = leftDataAdapter.getDataLeft()
-                    .find { it.name == binder.tvName.text.toString().trim() }
+//                var findLeft: Task3Data? = leftDataAdapter.getDataLeft()
+//                    .find { it.name == binder.tvName.text.toString().trim() }
+
+//                if (findLeft == null && binder.tvName.text.toString().trim().isNullOrEmpty()
+//                        .not()
+//                ) {
+//                    leftDataAdapter.add(makeTaskData(binder.tvName.text.toString().trim()))
+//                }
                 var findRight: Task3Data? = rightDataAdapter.getDataRight()
                     .find { it.name == binder.tvName.text.toString().trim() }
-                if (findLeft == null && binder.tvName.text.toString().trim().isNullOrEmpty()
-                        .not()
-                ) {
-                    leftDataAdapter.add(makeTaskData(binder.tvName.text.toString().trim()))
-                }
                 if (findRight == null && binder.tvName.text.toString().trim().isNullOrEmpty()
                         .not()
                 ) {
@@ -147,6 +146,25 @@ class Task3ViewModel(application: Application) : BaseViewModel(application) {
 
         fun onMoveRight(view: View) {
             try {
+//                leftDataAdapter.getDataLeft().forEachIndexed { index, element ->
+//                    var findData: Task3Data? = rightDataAdapter.getDataRight()
+//                        .find { it.name == element.name }
+//                    if (element.isSelected && findData == null) {
+//                        rightDataAdapter.add(element)
+//                        leftDataAdapter.removeAt(index)
+//                    }
+//                }
+
+                val iterator: MutableIterator<Task3Data>? = leftDataAdapter.getDataLeft().iterator()
+                while (iterator?.hasNext() == true) {
+                    val value = iterator.next()
+                    var findData: Task3Data? = rightDataAdapter.getDataRight()
+                        .find { it.name == value.name }
+                    if (value.isSelected && findData == null) {
+                        rightDataAdapter.add(value)
+                        iterator.remove()
+                    }
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -154,6 +172,25 @@ class Task3ViewModel(application: Application) : BaseViewModel(application) {
 
         fun onMoveLeft(view: View) {
             try {
+//                rightDataAdapter.getDataRight().forEachIndexed { index, element ->
+//                    var findData: Task3Data? = leftDataAdapter.getDataLeft()
+//                        .find { it.name == element.name }
+//                    if (element.isSelected && findData == null) {
+//                        leftDataAdapter.add(element)
+//                        rightDataAdapter.removeAt(index)
+//                    }
+//                }
+                val iterator: MutableIterator<Task3Data>? =
+                    rightDataAdapter.getDataRight().iterator()
+                while (iterator?.hasNext() == true) {
+                    val value = iterator.next()
+                    var findData: Task3Data? = leftDataAdapter.getDataLeft()
+                        .find { it.name == value.name }
+                    if (value.isSelected && findData == null) {
+                        leftDataAdapter.add(value)
+                        iterator.remove()
+                    }
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -162,6 +199,72 @@ class Task3ViewModel(application: Application) : BaseViewModel(application) {
 
         fun onSwap(view: View) {
             try {
+                var tempRight = mutableListOf<Task3Data>()
+                rightDataAdapter.getDataRight().forEachIndexed { index, element ->
+                    if (element.isSelected) {
+                        tempRight.add(element)
+                        if (tempRight.size > 1) {
+                            showToast("More than Two item Selcted at right side")
+                            return@forEachIndexed
+                        }
+                    }
+                }
+                var tempLeft = mutableListOf<Task3Data>()
+                leftDataAdapter.getDataLeft().forEachIndexed { index, element ->
+                    if (element.isSelected) {
+                        tempLeft.add(element)
+                        if (tempLeft.size > 1) {
+                            showToast("More than Two item Selcted at left side")
+                            return@forEachIndexed
+                        }
+                    }
+                }
+
+                if (tempLeft.size == 1 && tempRight.size == 1) {
+//                    val iterator: MutableIterator<Task3Data>? =
+//                        rightDataAdapter.getDataRight().iterator()
+//                    while (iterator?.hasNext() == true) {
+//                        val value = iterator.next()
+//                        var findData: Task3Data? = leftDataAdapter.getDataLeft()
+//                            .find { it.name == value.name }
+//                        if (value.isSelected && findData == null) {
+//                            leftDataAdapter.add(value)
+//                            iterator.remove()
+//                        }
+//                    }
+//
+//                    val iterator1: MutableIterator<Task3Data>? = leftDataAdapter.getDataLeft().iterator()
+//                    while (iterator1?.hasNext() == true) {
+//                        val value = iterator1.next()
+//                        var findData: Task3Data? = rightDataAdapter.getDataRight()
+//                            .find { it.name == value.name }
+//                        if (value.isSelected && findData == null) {
+//                            rightDataAdapter.add(value)
+//                            iterator1.remove()
+//                        }
+//                    }
+
+                    leftDataAdapter.getDataLeft().forEachIndexed { index, element ->
+                        var findData: Task3Data? = rightDataAdapter.getDataRight()
+                            .find { it.name == element.name }
+                        if (element.isSelected && findData == null) {
+                            rightDataAdapter.add(element)
+                            leftDataAdapter.removeAt(index)
+                        }
+                    }
+
+                    rightDataAdapter.getDataRight().forEachIndexed { index, element ->
+                        var findData: Task3Data? = leftDataAdapter.getDataLeft()
+                            .find { it.name == element.name }
+                        if (element.isSelected && findData == null) {
+                            leftDataAdapter.add(element)
+                            rightDataAdapter.removeAt(index)
+                        }
+                    }
+
+                } else {
+                    showToast("Not Selected")
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

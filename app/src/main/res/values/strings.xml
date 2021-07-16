@@ -83,5 +83,6 @@
     <string name="copy"><![CDATA[Copy<<]]></string>
     <string name="copyright"><![CDATA[Copy>>]]></string>
     <string name="moveleft"><![CDATA[Move<<]]></string>
+    <string name="password_error">Password must be one Capital, one special character and greater than 7 character</string>
 
 </resources>

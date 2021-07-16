@@ -66,7 +66,7 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
             showToast((mContext as Activity).getString(R.string.incorrect_email_address_or_password))
             return false
         } else if (!passwordValidator.isValid()) {
-            showToast((mContext as Activity).getString(R.string.incorrect_email_address_or_password))
+            showToast((mContext as Activity).getString(R.string.password_error))
             return false
         }
         return true
