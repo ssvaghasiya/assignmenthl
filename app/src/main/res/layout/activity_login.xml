@@ -59,6 +59,7 @@
                 android:text="Login to continue..." />
 
             <com.assignmenthyperlink.custom.CEditTextView
+                android:id="@+id/edtEmail"
                 style="@style/txt_000_12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,13 +68,13 @@
                 android:drawableStart="@drawable/ic_email"
                 android:drawablePadding="@dimen/_8sdp"
                 android:hint="Email ID"
-                android:inputType="number"
-                android:maxLength="10"
+                android:imeOptions="actionNext"
                 android:paddingHorizontal="@dimen/_12sdp"
                 android:paddingVertical="@dimen/_10sdp"
                 android:singleLine="true" />
 
             <com.assignmenthyperlink.custom.CEditTextView
+                android:id="@+id/edtPassword"
                 style="@style/txt_000_12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,8 +83,8 @@
                 android:drawableStart="@drawable/ic_key"
                 android:drawablePadding="@dimen/_8sdp"
                 android:hint="* * * * * *"
-                android:inputType="number"
-                android:maxLength="10"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
                 android:paddingHorizontal="@dimen/_12sdp"
                 android:paddingVertical="@dimen/_10sdp"
                 android:singleLine="true" />
@@ -129,6 +130,7 @@
             android:layout_gravity="bottom"
             android:background="@color/white"
             android:gravity="center"
+            android:onClick="@{(v)->viewClickHandler.onSignup(v)}"
             android:orientation="vertical">
 
             <com.assignmenthyperlink.custom.CTextView

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Demoapp</string>
+    <string name="app_name">Assignment</string>
 
     <string name="google_maps_key" translatable="false">AIzaSyDkzVKRY-iN6sW9tLcFynJFyaVFkhaKMcM</string>
     <string name="connection_title">No internet connection</string>
@@ -45,7 +45,6 @@
     <string name="choose_camera">Take From Camera</string>
     <string name="cancel">Cancel</string>
     <string name="continue_">Continue</string>
-    <string name="job_adder">Job Adder</string>
     <string name="showcase">Showcase</string>
     <string name="sign_in_with_an_email_link"><u>Sign in with an email link</u></string>
     <string name="sign_in_with_an_password_link"><u>Sign in with password</u></string>
@@ -78,5 +77,6 @@
     <string name="re_enter_the_same_password">Re-enter the same password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="err_select_image">Select Image</string>
+    <string name="i_agree_to_terms_condition"><![CDATA[I agree to Terms & Condition]]></string>
 
 </resources>

@@ -25,7 +25,7 @@ import javax.security.cert.CertificateException
 
 
 internal object APIClient {
-    private const val baseURL: String = "https://medical.testme.zone/api/"
+    private const val baseURL: String = "https://api.imgflip.com/get_memes"
 //    fun getBaseUrl(): String {
 //        if(Debug.SANDBOX_API_URL){
 //            return baseURL

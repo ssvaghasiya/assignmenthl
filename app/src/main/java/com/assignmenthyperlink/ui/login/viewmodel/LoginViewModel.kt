@@ -8,6 +8,7 @@ import android.view.View
 import com.assignmenthyperlink.R
 import com.assignmenthyperlink.base.viewmodel.BaseViewModel
 import com.assignmenthyperlink.databinding.ActivityLoginBinding
+import com.assignmenthyperlink.ui.createaccount.view.CreateAccountActivity
 import com.assignmenthyperlink.ui.home.view.HomeActivity
 import com.assignmenthyperlink.validator.EmailValidator
 import com.assignmenthyperlink.validator.PasswordValidator
@@ -34,9 +35,11 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
     inner class ViewClickHandler {
         fun onSignin(view: View) {
             try {
-                val i = Intent(mContext, HomeActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                mContext.startActivity(i)
+                if (isValidate()) {
+                    val i = Intent(mContext, HomeActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    mContext.startActivity(i)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -44,8 +47,8 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 
         fun onSignup(view: View) {
             try {
-//                val i = Intent(mContext, SignupActivity::class.java)
-//                mContext.startActivity(i)
+                val i = Intent(mContext, CreateAccountActivity::class.java)
+                mContext.startActivity(i)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -53,17 +56,15 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
     }
 
     fun isValidate(): Boolean {
-//        val emailValidator = EmailValidator(binder.edtEmail.text.toString().trim())
-//        val passwordValidator = PasswordValidator(mContext, binder.edtPassword.text.toString())
-//        if (binder.edtEmail.text.toString().trim().isNullOrEmpty()) {
-//            showToast((mContext as Activity).getString(R.string.incorrect_email_address_or_password))
-//            return false
-//        } else if (binder.edtPassword.text.toString()
-//                .isNullOrEmpty()
-//        ) {
-//            showToast((mContext as Activity).getString(R.string.incorrect_email_address_or_password))
-//            return false
-//        }
+        val emailValidator = EmailValidator(binder.edtEmail.text.toString().trim())
+        val passwordValidator = PasswordValidator(mContext, binder.edtPassword.text.toString())
+        if (!emailValidator.isValid()) {
+            showToast((mContext as Activity).getString(R.string.incorrect_email_address_or_password))
+            return false
+        } else if (!passwordValidator.isValid()) {
+            showToast((mContext as Activity).getString(R.string.incorrect_email_address_or_password))
+            return false
+        }
         return true
     }
 
