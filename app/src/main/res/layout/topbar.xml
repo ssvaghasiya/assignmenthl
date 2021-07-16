@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isBackShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isSettingShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isLayoutShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isTextShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isDateShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isTextShow1"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isTextEdit"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isEditShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isCenterTextShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isAddFriendShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isBackRoundedShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isStartTextShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isStartText1Show"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isHeadPhonesShow"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="topBarClickListener"
+            type="com.assignmenthyperlink.interfaces.TopBarClickListener" />
+
+    </data>
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="noScroll|enterAlways"
+            app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:theme="@style/ToolbarTheme">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/header_back"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:onClick="@{(v)->topBarClickListener.onTopBarClickListener(v,@string/back)}"
+                    android:visibility="@{isBackShow? View.VISIBLE : View.GONE, default=visible}" />
+
+
+                <com.assignmenthyperlink.custom.CTextView
+                    android:id="@+id/tvTitleText1"
+                    style="@style/txt_blue1_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:onClick="@{(v)->topBarClickListener.onTopBarClickListener(v,@string/back)}"
+                    android:singleLine="true"
+                    android:text="@string/job_adder"
+                    android:includeFontPadding="false"
+                    android:visibility="@{isTextShow1? View.VISIBLE : View.GONE, default=gone}" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.assignmenthyperlink.custom.CTextViewSB
+                        android:id="@+id/tvTitleText"
+                        style="@style/txt_000_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/job_adder"
+                        android:visibility="@{isTextShow? View.VISIBLE : View.GONE, default=visible}" />
+
+                    <com.assignmenthyperlink.custom.CTextView
+                        android:id="@+id/tvDate"
+                        style="@style/txt_blue_highlight_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="@string/job_adder"
+                        android:layout_marginTop="@dimen/_minus2sdp"
+                        android:visibility="@{isDateShow? View.VISIBLE : View.GONE, default=gone}" />
+                </LinearLayout>
+
+                <com.assignmenthyperlink.custom.CTextViewSB
+                    android:id="@+id/tvEditText"
+                    style="@style/txt_000_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:singleLine="true"
+                    android:includeFontPadding="false"
+                    android:text="@string/job_adder"
+                    android:visibility="@{isTextEdit? View.VISIBLE : View.GONE, default=gone}" />
+
+
+            </FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

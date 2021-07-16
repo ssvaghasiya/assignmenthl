@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewClickHandler"
+            type="com.assignmenthyperlink.ui.login.viewmodel.LoginViewModel.ViewClickHandler" />
+
+        <variable
+            name="viewModel"
+            type="com.assignmenthyperlink.ui.login.viewmodel.LoginViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_login_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:paddingHorizontal="@dimen/_20sdp">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgVehicle"
+                android:layout_width="@dimen/_63sdp"
+                android:layout_height="@dimen/_63sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_login_logo"
+                android:visibility="visible" />
+
+            <com.assignmenthyperlink.custom.CTextView
+                style="@style/txt_fff_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="Welcome Back To" />
+
+            <com.assignmenthyperlink.custom.CTextView
+                style="@style/txt_fff_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="Login to continue..." />
+
+            <com.assignmenthyperlink.custom.CEditTextView
+                style="@style/txt_000_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:background="@drawable/edt_bg"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="@dimen/_8sdp"
+                android:hint="Email ID"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:singleLine="true" />
+
+            <com.assignmenthyperlink.custom.CEditTextView
+                style="@style/txt_000_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@drawable/edt_bg"
+                android:drawableStart="@drawable/ic_key"
+                android:drawablePadding="@dimen/_8sdp"
+                android:hint="* * * * * *"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:singleLine="true" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginBottom="@dimen/_32sdp"
+                android:orientation="horizontal">
+
+                <com.assignmenthyperlink.custom.CButtonViewB
+                    android:id="@+id/btnAdd"
+                    style="@style/txt_fff_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_btn_bg"
+                    android:gravity="center"
+                    android:onClick="@{(v)->viewClickHandler.onSignin(v)}"
+                    android:paddingHorizontal="@dimen/_40sdp"
+                    android:paddingVertical="@dimen/_12sdp"
+                    android:singleLine="true"
+                    android:includeFontPadding="false"
+                    android:text="Login"
+                    android:textAllCaps="true" />
+
+                <com.assignmenthyperlink.custom.CTextView
+                    style="@style/txt_fff_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:singleLine="true"
+                    android:includeFontPadding="false"
+                    android:text="Forgot Password ?" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.assignmenthyperlink.custom.CTextView
+                style="@style/txt_orange_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_create_account"
+                android:gravity="center"
+                android:drawablePadding="@dimen/_10ssp"
+                android:paddingVertical="@dimen/_16sdp"
+                android:singleLine="true"
+                android:includeFontPadding="false"
+                android:text="Create New Account" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+</layout>
